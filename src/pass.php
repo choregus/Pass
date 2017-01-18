@@ -15,7 +15,7 @@
 		public function passAttr() {
 			$prop = null; $prop_2 = null; $properties = null;
 
-			preg_match_all("/[$].*[=].*/", $this->file, $match); $vars = count($match[0]);
+			preg_match_all("/[$].*= .*;/", $this->file, $match); $vars = count($match[0]);
 			for ($i=0; $i < $vars; $i++) { $prop .= str_replace(' ',null,$match[0][$i]); $this->file = str_replace($match[0][$i],null,$this->file); }
 			$prop_2 = explode(';', $prop); $prop = null; for ($i=0; $i < count($prop_2); $i++) { $prop = explode('=', $prop_2[$i]); if($prop[0] > null) { $properties[$prop[0]] = $prop[1]; }}
 			$this->properties = $properties;
